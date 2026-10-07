@@ -113,6 +113,46 @@ public class Matriz {
         return resultado.toString();
     }    
 
+
+/**
+     * Suma la matriz actual con otra pasada como argumento.
+     * Devuelve null si el argumento es null o no tienen la misma dimensión.
+     */
+    public Matriz sumar(Matriz otra) {
+        if (otra == null) {
+            return null;
+        }
+        if (this.filas != otra.filas || this.columnas != otra.columnas) {
+            return null;
+        }
+        
+        double[][] resultado = new double[this.filas][this.columnas];
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                resultado[i][j] = this.datos[i][j] + otra.datos[i][j];
+            }
+        }
+        return new Matriz(resultado);
+    }
+
+    /**
+     * Versión estática que suma dos matrices.
+     */
+    public static Matriz sumar(Matriz m1, Matriz m2) {
+        if (m1 == null) {
+            return null;
+        }
+        return m1.sumar(m2);
+    }
+
+
+
+
+
+
+
+
+
     public static void main(String[] args) {
         double[][] valores = {
             {1.0, 2.0, 3.0},
