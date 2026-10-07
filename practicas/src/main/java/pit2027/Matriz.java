@@ -145,12 +145,28 @@ public class Matriz {
         return m1.sumar(m2);
     }
 
+/**
+     * Devuelve la matriz traspuesta de la actual.
+     */
+    public Matriz traspuesta() {
+        double[][] resultado = new double[this.columnas][this.filas];
+        for (int i = 0; i < this.filas; i++) {
+            for (int j = 0; j < this.columnas; j++) {
+                resultado[j][i] = this.datos[i][j];
+            }
+        }
+        return new Matriz(resultado);
+    }
 
-
-
-
-
-
+    /**
+     * Versión estática que devuelve la matriz traspuesta de la dada.
+     */
+    public static Matriz traspuesta(Matriz m) {
+        if (m == null) {
+            return null;
+        }
+        return m.traspuesta();
+    }
 
 
     public static void main(String[] args) {

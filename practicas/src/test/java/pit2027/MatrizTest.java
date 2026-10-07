@@ -188,4 +188,29 @@ public class MatrizTest {
         assertEquals(null, Matriz.sumar(null, m2));
     }
 
+@Test
+    public void testTraspuesta() {
+        Matriz m = new Matriz(new double[][]{{1.0, 2.0, 3.0}, {4.0, 5.0, 6.0}});
+        Matriz t = m.traspuesta();
+        
+        assertArrayEquals(new int[]{3, 2}, t.getDimension());
+        assertEquals(1.0, t.getElemento(0, 0), 1e-9);
+        assertEquals(4.0, t.getElemento(0, 1), 1e-9);
+        assertEquals(2.0, t.getElemento(1, 0), 1e-9);
+        assertEquals(5.0, t.getElemento(1, 1), 1e-9);
+        assertEquals(3.0, t.getElemento(2, 0), 1e-9);
+        assertEquals(6.0, t.getElemento(2, 1), 1e-9);
+    }
+
+    @Test
+    public void testTraspuestaEstatica() {
+        Matriz m = new Matriz(new double[][]{{1.0, 2.0}});
+        Matriz t = Matriz.traspuesta(m);
+        
+        assertArrayEquals(new int[]{2, 1}, t.getDimension());
+        assertEquals(1.0, t.getElemento(0, 0), 1e-9);
+        assertEquals(2.0, t.getElemento(1, 0), 1e-9);
+        assertEquals(null, Matriz.traspuesta(null));
+    }
+
 }
