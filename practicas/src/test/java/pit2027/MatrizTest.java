@@ -153,4 +153,39 @@ public class MatrizTest {
 
         new Matriz(datos);
     }
+
+
+
+@Test
+    public void testSumar() {
+        Matriz m1 = new Matriz(new double[][]{{1.0, 2.0}, {3.0, 4.0}});
+        Matriz m2 = new Matriz(new double[][]{{5.0, 6.0}, {7.0, 8.0}});
+        
+        Matriz resultado = m1.sumar(m2);
+        
+        assertEquals(6.0, resultado.getElemento(0, 0), 1e-9);
+        assertEquals(8.0, resultado.getElemento(0, 1), 1e-9);
+        assertEquals(10.0, resultado.getElemento(1, 0), 1e-9);
+        assertEquals(12.0, resultado.getElemento(1, 1), 1e-9);
+    }
+
+    @Test
+    public void testSumarDimensionesIncorrectas() {
+        Matriz m1 = new Matriz(new double[][]{{1.0, 2.0}});
+        Matriz m2 = new Matriz(new double[][]{{1.0, 2.0}, {3.0, 4.0}});
+        
+        assertEquals(null, m1.sumar(m2));
+        assertEquals(null, m1.sumar(null));
+    }
+
+    @Test
+    public void testSumarEstatico() {
+        Matriz m1 = new Matriz(new double[][]{{1.0, 2.0}, {3.0, 4.0}});
+        Matriz m2 = new Matriz(new double[][]{{5.0, 6.0}, {7.0, 8.0}});
+        
+        Matriz resultado = Matriz.sumar(m1, m2);
+        assertEquals(6.0, resultado.getElemento(0, 0), 1e-9);
+        assertEquals(null, Matriz.sumar(null, m2));
+    }
+
 }
